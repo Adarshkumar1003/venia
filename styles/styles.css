@@ -177,25 +177,25 @@ button {
   padding: 0.5em 1.2em;
   font-family: var(--body-font-family);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1.25;
   text-align: center;
-  text-decoration: none;
-  background-color: var(--link-color);
-  color: var(--background-color);
+  text-decoration: underline;
+  background-color: none;
+  color: black;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-a.button:hover,
+/* a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
   background-color: var(--link-hover-color);
   cursor: pointer;
-}
+} */
 
 button:disabled,
 button:disabled:hover {
