@@ -171,7 +171,7 @@ button {
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
-  margin: 12px 0;
+  margin: 0px 0;
   border: 2px solid transparent;
   border-radius: 2.4em;
   padding: 0.5em 1.2em;
@@ -180,7 +180,7 @@ button {
   font-weight: 300;
   line-height: 1.25;
   text-align: center;
-  text-decoration: underline;
+
   background-color: none;
   color: black;
   cursor: pointer;
@@ -229,7 +229,7 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  margin: 0px 0;
 }
 
 main > .section > div {

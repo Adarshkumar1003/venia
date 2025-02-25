@@ -1,12 +1,9 @@
 import { fetchPlaceholders } from '../../scripts/aem.js';
-
 function updateActiveSlide(slide) {
   const block = slide.closest('.carousel');
   const slideIndex = parseInt(slide.dataset.slideIndex, 10);
   block.dataset.activeSlide = slideIndex;
-
   const slides = block.querySelectorAll('.carousel-slide');
-
   slides.forEach((aSlide, idx) => {
     aSlide.setAttribute('aria-hidden', idx !== slideIndex);
     aSlide.querySelectorAll('a').forEach((link) => {
@@ -17,7 +14,6 @@ function updateActiveSlide(slide) {
       }
     });
   });
-
   const indicators = block.querySelectorAll('.carousel-slide-indicator');
   indicators.forEach((indicator, idx) => {
     if (idx !== slideIndex) {
@@ -27,7 +23,6 @@ function updateActiveSlide(slide) {
     }
   });
 }
-
 function showSlide(block, slideIndex = 0) {
   const slides = block.querySelectorAll('.carousel-slide');
   let realSlideIndex = slideIndex < 0 ? slides.length - 1 : slideIndex;
@@ -41,7 +36,6 @@ function showSlide(block, slideIndex = 0) {
     behavior: 'smooth',
   });
 }
-
 function bindEvents(block) {
   const slideIndicators = block.querySelector('.carousel-slide-indicators');
   if (!slideIndicators) return;
@@ -51,6 +45,12 @@ function bindEvents(block) {
       const slideIndicator = e.currentTarget.parentElement;
       showSlide(block, parseInt(slideIndicator.dataset.targetSlide, 10));
     });
+  });
+  block.querySelector('.slide-prev').addEventListener('click', () => {
+    showSlide(block, parseInt(block.dataset.activeSlide, 10) - 1);
+  });
+  block.querySelector('.slide-next').addEventListener('click', () => {
+    showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
   });
 
   const slideObserver = new IntersectionObserver((entries) => {
@@ -110,11 +110,9 @@ export default async function decorate(block) {
     slideIndicatorsNav.append(slideIndicators);
     block.append(slideIndicatorsNav);
   }
-
   rows.forEach((row, idx) => {
     const slide = createSlide(row, idx, carouselId);
     slidesWrapper.append(slide);
-
     if (slideIndicators) {
       const indicator = document.createElement('li');
       indicator.classList.add('carousel-slide-indicator');
@@ -124,10 +122,8 @@ export default async function decorate(block) {
     }
     row.remove();
   });
-
   container.append(slidesWrapper);
   block.prepend(container);
-
   if (!isSingleSlide) {
     bindEvents(block);
   }
