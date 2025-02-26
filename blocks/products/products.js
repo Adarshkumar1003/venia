@@ -7,11 +7,20 @@ export default async function decorate(block) {
     const sizeContainer = document.querySelector('.products.size');
     if (sizeContainer) {
       const sizesDiv = sizeContainer.querySelector('div:last-child');
-      const sizeDisplay = sizesDiv.querySelector('div');
-      
+      let sizeDisplay = sizesDiv.querySelector('.selected-size-display');
+
+      // Create the selected size display if not exists
+      if (!sizeDisplay) {
+        sizeDisplay = document.createElement('div');
+        sizeDisplay.className = 'selected-size-display';
+        sizeDisplay.textContent = 'Selected Fashion Size: None';
+        sizesDiv.appendChild(sizeDisplay);
+      }
+
       // Create size buttons container (only if it doesn't exist)
-      if (!sizesDiv.querySelector('.size-buttons')) {
-        const sizeButtonsContainer = document.createElement('div');
+      let sizeButtonsContainer = sizesDiv.querySelector('.size-buttons');
+      if (!sizeButtonsContainer) {
+        sizeButtonsContainer = document.createElement('div');
         sizeButtonsContainer.className = 'size-buttons';
         
         // Create S, M, L buttons
@@ -47,17 +56,17 @@ export default async function decorate(block) {
       const counterContainer = document.createElement('div');
       counterContainer.className = 'quantity-counter';
       
-      // Create minus button
+      // Create minus button (circle)
       const minusBtn = document.createElement('button');
       minusBtn.className = 'counter-btn minus';
       minusBtn.textContent = '-';
       
-      // Create counter display
+      // Create counter display (rectangle)
       const counterValue = document.createElement('span');
       counterValue.className = 'counter-value';
       counterValue.textContent = '1';
       
-      // Create plus button
+      // Create plus button (circle)
       const plusBtn = document.createElement('button');
       plusBtn.className = 'counter-btn plus';
       plusBtn.textContent = '+';
