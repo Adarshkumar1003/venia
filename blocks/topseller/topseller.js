@@ -3,7 +3,6 @@
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  // Get the API URL from the anchor tag
   const apiUrlAnchor = block.querySelector('a[href*="query-index.json"]');
   if (!apiUrlAnchor) {
     console.error('Could not find anchor tag with API URL');
@@ -21,9 +20,9 @@ export default async function decorate(block) {
   }
 
   function getChunkSize() {
-    if (window.innerWidth < 600) return 2; // 2 images for mobile
-    if (window.innerWidth <= 1024) return 3; // 3 images for tablet
-    return 3; // 3 images for desktop
+    if (window.innerWidth < 600) return 2; 
+    if (window.innerWidth <= 1024) return 3; 
+    return 3; 
   }
 
   function createSlide(cardData) {
@@ -93,7 +92,7 @@ export default async function decorate(block) {
       });
     }
 
-    showSlide(0); // Show the first slide
+    showSlide(0); 
 
     const dotsContainer = document.createElement('div');
     dotsContainer.classList.add('dots-container');
