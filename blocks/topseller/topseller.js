@@ -3,20 +3,27 @@
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  const apiUrl = 'http://localhost:3000/query-index.json';
+  // Get the API URL from the anchor tag
+  const apiUrlAnchor = block.querySelector('a[href*="query-index.json"]');
+  if (!apiUrlAnchor) {
+    console.error('Could not find anchor tag with API URL');
+    return;
+  }
+  const apiUrl = apiUrlAnchor.href;
 
   async function fetchData() {
     const response = await fetch(apiUrl);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
+  
     return response.json();
   }
 
   function getChunkSize() {
     if (window.innerWidth < 600) return 2; // 2 images for mobile
     if (window.innerWidth <= 1024) return 3; // 3 images for tablet
-    return 4; // 4 images for desktop
+    return 3; // 3 images for desktop
   }
 
   function createSlide(cardData) {
@@ -25,9 +32,18 @@ export default async function decorate(block) {
     cardData.forEach((card) => {
       const cardElement = document.createElement('div');
       cardElement.classList.add('card');
+      
+      
 
+      const imageWrapper = document.createElement('a');
+      imageWrapper.href = card.path;
+
+
+      
       const image = document.createElement('img');
       image.src = card.image;
+      image.alt = card.title;
+      imageWrapper.appendChild(image);
 
       const caption = document.createElement('p');
       caption.textContent = card.title;
@@ -39,7 +55,7 @@ export default async function decorate(block) {
       cardButton.classList.add('card-btn');
       cardButton.textContent = 'ADD TO CART';
 
-      cardElement.append(image, caption, price, cardButton);
+      cardElement.append(imageWrapper, caption, price, cardButton);
       slide.appendChild(cardElement);
     });
     return slide;
@@ -88,6 +104,8 @@ export default async function decorate(block) {
   }
 
   const data = await fetchData();
+  console.log(data.data.path);
   renderCarousel(data);
   window.addEventListener('resize', () => renderCarousel(data));
+
 }

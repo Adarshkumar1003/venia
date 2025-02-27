@@ -1,0 +1,14 @@
+.breadcrumb>p{
+    font-size: 0.875rem;
+    margin: 1rem;
+    line-height: 1.5;
+}
+.breadcrumb >p >a{
+    text-decoration: underline;
+    color: var(--dark-color);
+}
+
+.breadcrumb>p>span{
+    margin-left: 0.4rem;
+    font-weight: 400;
+}

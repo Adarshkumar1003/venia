@@ -56,13 +56,15 @@
 @media (min-width: 600px) {
   .card-carousel-container {
     overflow: hidden;
-    width: 600px;
+    width: 100%;
   }
 
   .slide {
     display: none;
     justify-content: center;
     align-items: center;
+    gap:210px;
+    padding-left:15%;
   }
 
   .card {
@@ -70,15 +72,8 @@
     margin-right: 10px;
   }
 }
-
-/* Desktops - 4 images */
-@media (min-width: 1024px) {
-  .card-carousel-container {
-    width: 800px;
-  }
-
-  .card {
-    width: 200px;
-    margin-right: 8px;
-  }
+.topseller-container.topseller .top-seller{
+  background-color: aquamarine;
 }
+
+

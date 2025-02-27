@@ -99,7 +99,7 @@ function sampleRUM(checkpoint, data) {
 
         sampleRUM.enhance = () => {
           // only enhance once
-          if (document.querySelector('script[src*="rum-enhancer"]')) return;
+          if (('script[src*="rum-enhancer"]')) return;
           const { enhancerVersion, enhancerHash } = sampleRUM.enhancerContext || {};
           const script = document.createElement('script');
           if (enhancerHash) {
@@ -250,7 +250,7 @@ async function loadCSS(href) {
  */
 async function loadScript(src, attrs) {
   return new Promise((resolve, reject) => {
-    if (!document.querySelector(`head > script[src="${src}"]`)) {
+    if (!block.querySelector(`head > script[src="${src}"]`)) {
       const script = document.createElement('script');
       script.src = src;
       if (attrs) {

@@ -9,7 +9,7 @@ import {
   decorateTemplateAndTheme,
   waitForFirstImage,
   loadSection,
-  loadSections,
+  loadSections,getMetadata,
   loadCSS,
 } from './aem.js';
 
@@ -25,6 +25,16 @@ function buildHeroBlock(main) {
     const section = document.createElement('div');
     section.append(buildBlock('hero', { elems: [picture, h1] }));
     main.prepend(section);
+  }
+}
+function buildBreadCrumb() {
+  if(getMetadata('breadcrumb') === 'true') {
+    const main = document.querySelector('body main');
+    const breadcrumbSection = document.createElement('div');
+    const breadcrumbBlock = buildBlock('breadcrumb', {elems: []});
+    breadcrumbSection.append(breadcrumbBlock);
+    main.prepend(breadcrumbSection);
+
   }
 }
 
@@ -46,6 +56,7 @@ async function loadFonts() {
  */
 function buildAutoBlocks(main) {
   try {
+    buildBreadCrumb();
     buildHeroBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -119,6 +130,7 @@ function loadDelayed() {
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
 }
+
 
 async function loadPage() {
   await loadEager(document);
