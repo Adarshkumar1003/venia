@@ -51,7 +51,6 @@ function initSizeSelector(block) {
   const sizeLinks = sizeContainer.querySelectorAll('a');
   if (sizeLinks.length === 0) return;
   
-  t
   const selectedSizeDisplay = document.createElement('p');
   selectedSizeDisplay.className = 'selected-size-display';
   selectedSizeDisplay.textContent = 'Selected size: None';
@@ -73,7 +72,6 @@ function initSizeSelector(block) {
   });
 }
 
-n
 function addQuantitySelector(block) {
   const quantitySection = block.querySelector('.products > div:nth-child(3) > div:nth-child(3)');
   if (!quantitySection) return;

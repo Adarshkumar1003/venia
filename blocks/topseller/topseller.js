@@ -32,13 +32,8 @@ export default async function decorate(block) {
       const cardElement = document.createElement('div');
       cardElement.classList.add('card');
       
-      
-
       const imageWrapper = document.createElement('a');
       imageWrapper.href = card.path;
-
-
-      
       const image = document.createElement('img');
       image.src = card.image;
       image.alt = card.title;
@@ -62,8 +57,7 @@ export default async function decorate(block) {
 
   function renderCarousel(data) {
     block.innerHTML = ''; 
-
-    const carouselData = data.data.slice(0, 8);
+    const carouselData = data.data.slice(0, 5);
     const chunkSize = getChunkSize();
     const slides = [];
     for (let i = 0; i < carouselData.length; i += chunkSize) {

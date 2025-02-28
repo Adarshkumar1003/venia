@@ -163,4 +163,15 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
+
+  const searchIcon = nav.querySelector('.icon-search');
+  if (searchIcon) {
+    searchIcon.addEventListener('click', function() {
+      console.log("Search icon clicked");
+      window.location.href = 'https://www.google.com'; // Redirect to Google
+    });
+  }
+
+
 }
