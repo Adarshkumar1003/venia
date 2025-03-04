@@ -1,6 +1,6 @@
 /**
  * Loads and decorates the footer
- * @param {Element} block The footer block element
+ * @param {Element} block 
  */
 export default async function decorate(block) {
   const apiUrlAnchor = block.querySelector('a[href*="query-index.json"]');
@@ -93,11 +93,9 @@ export default async function decorate(block) {
     dots.forEach((dot) => dotsContainer.appendChild(dot));
 
     block.append(carouselContainer, dotsContainer);
-    block.querySelector('.button-container p').innerHTML = `Top Sellers!`;
   }
 
   const data = await fetchData();
-  console.log(data.data.path);
   renderCarousel(data);
   window.addEventListener('resize', () => renderCarousel(data));
 

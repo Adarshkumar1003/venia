@@ -19,6 +19,12 @@
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
 
+  --primary-color: #06f;      
+  --secondary-color: #bbb;    
+  --active-dot-color: #000;   
+  --card-bg-color: #fff;      
+  --text-color: #000; 
+
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
   --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
@@ -150,7 +156,7 @@ input,
 textarea,
 select,
 button {
-  font: inherit;
+  /* font: inherit; */
 }
 
 /* links */
