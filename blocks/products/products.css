@@ -167,6 +167,8 @@
 
 .products.desc > div > div {
   flex: 1;
+  width: 100%;
+  text-align: justify;
 }
 .products.desc p:first-child {
   font-size: 1.2rem;
